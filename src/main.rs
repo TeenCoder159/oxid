@@ -1,4 +1,4 @@
-// TODO: add username/password min. requirements
+// TODO: add a better security system
 
 mod auth;
 mod login;
