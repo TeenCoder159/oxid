@@ -24,14 +24,15 @@ pub fn signup() {
 
             let password = auth::read_line();
 
-            if password.chars().count() > 8 && password.chars().count() < 20 {
-                println!("Invalid password")
+            if password.chars().count() < 8 || password.chars().count() > 20 {
+                println!("Invalid password");
+                continue;
             } else {
                 let parsed: Result<i32, _> = password.clone().parse();
                 match parsed {
                     Ok(_number) => {
-                        create_account(auth::hasher(username), auth::hasher(password));
-                        break;
+                        create_account(username, password);
+                        return;
                     }
                     Err(_) => println!("Password doesn't contain a number"),
                 }
