@@ -1,4 +1,4 @@
-// TODO: add a better security system
+// TODO: add a better security system (KDF)
 
 mod auth;
 mod login;
