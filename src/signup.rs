@@ -16,7 +16,7 @@ pub fn signup() {
         println!("Enter your email:");
         let username = auth::read_line();
 
-        if !username.contains("@") && username.chars().count() < 7 {
+        if !username.contains("@") || username.chars().count() < 7 {
             println!("Enter a valid email");
             continue;
         }
