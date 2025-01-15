@@ -3,8 +3,8 @@ use std::fs;
 
 fn create_account(username: String, password: String) {
     match fs::write(
-        auth::bcrypt_hasher(username, 14),
-        auth::bcrypt_hasher(password, 14),
+        auth::bcrypt_hasher(username, 14).to_string(),
+        auth::bcrypt_hasher(password, 14).to_string(),
     ) {
         Ok(_something) => println!("Account creation successful!"),
         Err(error) => panic!("{error}"),
