@@ -1,7 +1,7 @@
-# Oxid is a account manager made in rust ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+# Oxid is an account manager made in rust ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ---
 
-This project is my 1st project and hence will always be open source
+As this is my 1st project, it will always be open source
 
 Oxid can be used in any rust application requiring a username and password login
 
