@@ -9,7 +9,7 @@ Current status:
 
 - [x] Allow accounts to be accessed even if the program was turned off and on again
 - [x] Encrypt passwords with bcrypt
-- [x] Add minimum requirements for password and email (90% complete)
+- [x] Add minimum requirements for password and email
 
 - [ ] Add support for argon2
 - [ ] Store files in an organised manner
