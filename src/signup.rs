@@ -1,5 +1,7 @@
 use crate::auth;
 use std::fs;
+use zxcvbn::zxcvbn;
+extern crate zxcvbn;
 
 fn create_account(username: String, password: String) {
     match fs::write(username, auth::bcrypt_hasher(password, 14).to_string()) {
@@ -23,18 +25,19 @@ pub fn signup() {
             println!("Enter a Password:");
 
             let password = auth::read_line();
-
-            if password.chars().count() < 8 || password.chars().count() > 20 {
-                println!("Invalid password");
-                continue;
-            } else {
-                let parsed: Result<i32, _> = password.clone().parse();
-                match parsed {
-                    Ok(_number) => {
+            match zxcvbn(&password, &[]) {
+                Ok(entropy) => {
+                    if entropy.score() >= 3 {
                         create_account(username, password);
                         return;
+                    } else {
+                        println!("Password isn't strong enough");
+                        continue;
                     }
-                    Err(_) => println!("Password doesn't contain a number"),
+                }
+                Err(e) => {
+                    println!("Error: {e}");
+                    continue;
                 }
             }
         }
