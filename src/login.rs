@@ -1,4 +1,5 @@
 use crate::auth;
+use bcrypt::verify;
 use std::fs;
 
 pub fn login() {
@@ -6,26 +7,28 @@ pub fn login() {
         //
         println!("\nEnter username:");
 
-        let hashed_username = auth::bcrypt_hasher(auth::read_line(), 14);
+        let username = auth::read_line();
 
-        let password = match fs::read_to_string(hashed_username) {
+        let saved_password = match fs::read_to_string(username) {
             Ok(contents) => contents,
 
             Err(_error) => {
                 println!("Invalid username, please try again");
-                break;
+                continue;
             }
         };
 
         println!("Enter password:");
 
-        let hashed_password = auth::bcrypt_hasher(auth::read_line(), 14);
+        let password = auth::read_line();
 
-        if hashed_password == password {
-            println!("Login successful!");
-            break;
-        } else {
-            println!("An error occurred, please try again!")
+        match verify(password, &saved_password) {
+            Ok(matched) if matched => {
+                println!("Login successful!");
+                break;
+            }
+            Ok(_) => println!("Wrong password, try again"),
+            Err(e) => panic!("{e}"),
         }
     }
 }
