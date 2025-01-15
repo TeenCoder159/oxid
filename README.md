@@ -17,3 +17,7 @@ Current status:
 - [ ] Add support for argon2
 - [ ] Store files in an organised manner
 - [ ] Let server side operater choose encryption method
+
+## License
+
+This project is licensed under the terms of the [MIT License](LICENSE.md).
