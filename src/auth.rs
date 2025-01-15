@@ -1,4 +1,4 @@
-use std::hash::{DefaultHasher, Hash, Hasher};
+use bcrypt::hash;
 use std::io;
 
 pub fn read_line() -> String {
@@ -9,8 +9,6 @@ pub fn read_line() -> String {
     user_input.trim().to_string()
 }
 
-pub fn hasher(input: String) -> String {
-    let mut output = DefaultHasher::new();
-    input.hash(&mut output);
-    output.finish().to_string()
+pub fn bcrypt_hasher(input: String, cost: u32) -> String {
+    hash(input, cost).expect("Failed to hash password")
 }

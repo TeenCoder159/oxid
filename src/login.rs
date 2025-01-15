@@ -6,7 +6,7 @@ pub fn login() {
         //
         println!("\nEnter username:");
 
-        let hashed_username = auth::hasher(auth::read_line());
+        let hashed_username = auth::bcrypt_hasher(auth::read_line(), 14);
 
         let password = match fs::read_to_string(hashed_username) {
             Ok(contents) => contents,
@@ -19,7 +19,7 @@ pub fn login() {
 
         println!("Enter password:");
 
-        let hashed_password = auth::hasher(auth::read_line());
+        let hashed_password = auth::bcrypt_hasher(auth::read_line(), 14);
 
         if hashed_password == password {
             println!("Login successful!");
