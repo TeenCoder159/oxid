@@ -1,4 +1,4 @@
-// TODO: add a better security system (KDF)
+// TODO: make it into a crate, and allow for custom strengths
 
 mod auth;
 mod login;
