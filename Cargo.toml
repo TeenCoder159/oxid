@@ -6,3 +6,4 @@ edition = "2021"
 [dependencies]
 bcrypt = "0.12.0"
 zxcvbn = "2"
+password-auth = "1.0.0"
