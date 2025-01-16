@@ -1,6 +1,17 @@
 use crate::auth;
+use argon2::{
+    password_hash::{PasswordHash, PasswordVerifier},
+    Argon2,
+};
 use bcrypt::verify;
 use std::fs;
+
+pub fn _login_argon2(pwd_to_check: String, file_content: String) -> bool {
+    let parsed_hash = PasswordHash::new(&file_content).expect("failed");
+    Argon2::default()
+        .verify_password(pwd_to_check.as_bytes(), &parsed_hash)
+        .is_ok()
+}
 
 pub fn login() {
     loop {
