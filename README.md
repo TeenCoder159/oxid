@@ -12,11 +12,11 @@ Current status:
 - [x] Allow accounts to be accessed even if the program was turned off and on again
 - [x] Encrypt passwords with bcrypt
 - [x] Add minimum requirements for password and email
+- [x] Add support for argon2
+- [x] Only let programmer choose encryption method
 
 
-- [ ] Add support for argon2
 - [ ] Store files in an organised manner
-- [ ] Let server side operater choose encryption method
 
 ## License
 
