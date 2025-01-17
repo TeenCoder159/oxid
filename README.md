@@ -14,9 +14,8 @@ Current status:
 - [x] Add minimum requirements for password and email
 - [x] Add support for argon2
 - [x] Only let programmer choose encryption method
+- [x] Store files in an organised manner
 
-
-- [ ] Store files in an organised manner
 
 ## License
 
