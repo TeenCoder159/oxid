@@ -18,9 +18,8 @@ pub fn login() {
         //
         println!("\nEnter username:");
 
-        let username = auth::read_line();
-
-        let saved_password = match fs::read_to_string(username) {
+        let path = format!("accounts/{}", auth::read_line());
+        let saved_password = match fs::read_to_string(path) {
             Ok(contents) => contents,
 
             Err(_error) => {

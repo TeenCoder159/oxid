@@ -4,7 +4,8 @@ use zxcvbn::zxcvbn;
 extern crate zxcvbn;
 
 fn create_account(username: String, password: String) {
-    match fs::write(username, auth::bcrypt_hasher(password, 14).to_string()) {
+    let path = format!("accounts/{}", username);
+    match fs::write(path, auth::bcrypt_hasher(password, 14).to_string()) {
         Ok(_something) => println!("Account creation successful!"),
         Err(error) => panic!("{error}"),
     }
